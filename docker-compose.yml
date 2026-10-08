@@ -11,7 +11,10 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=production
-      - DATABASE_URL=postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@vectorchord:5432/${POSTGRES_DB:-streamystats}
+      - POSTGRES_HOST=vectorchord
+      - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres}
+      - POSTGRES_DB=${POSTGRES_DB:-streamystats}
       - JOB_SERVER_URL=http://job-server:3005
       - HOSTNAME=0.0.0.0
       - SESSION_SECRET=${SESSION_SECRET}
@@ -32,7 +35,10 @@ services:
     image: ghcr.io/fredrikburmester/streamystats-job-server:${VERSION:-latest}
     environment:
       - NODE_ENV=production
-      - DATABASE_URL=postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@vectorchord:5432/${POSTGRES_DB:-streamystats}
+      - POSTGRES_HOST=vectorchord
+      - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres}
+      - POSTGRES_DB=${POSTGRES_DB:-streamystats}
       - PORT=3005
       - HOST=0.0.0.0
       - NEXTJS_URL=http://nextjs-app:3000
