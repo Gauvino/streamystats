@@ -13,6 +13,8 @@ services:
       - NODE_ENV=production
       - POSTGRES_HOST=vectorchord
       - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      # Or POSTGRES_PASSWORD_FILE=/run/secrets/postgres_password: replace this line,
+      # never set both (in every service)
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres}
       - POSTGRES_DB=${POSTGRES_DB:-streamystats}
       - JOB_SERVER_URL=http://job-server:3005
@@ -37,6 +39,8 @@ services:
       - NODE_ENV=production
       - POSTGRES_HOST=vectorchord
       - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      # Or POSTGRES_PASSWORD_FILE=/run/secrets/postgres_password: replace this line,
+      # never set both (in every service)
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres}
       - POSTGRES_DB=${POSTGRES_DB:-streamystats}
       - PORT=3005
@@ -95,6 +99,8 @@ services:
     shm_size: 1g
     environment:
       - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      # Or POSTGRES_PASSWORD_FILE=/run/secrets/postgres_password: replace this line,
+      # never set both (in every service)
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres}
       - POSTGRES_DB=${POSTGRES_DB:-streamystats}
       - POSTGRES_HOST_AUTH_METHOD=scram-sha-256

@@ -19,6 +19,8 @@ services:
       - "3000:3000"
     environment:
       - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      # Or POSTGRES_PASSWORD_FILE=/run/secrets/postgres_password: replace this line,
+      # never set both
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres}
       - POSTGRES_DB=${POSTGRES_DB:-streamystats}
       - POSTGRES_HOST_AUTH_METHOD=scram-sha-256
